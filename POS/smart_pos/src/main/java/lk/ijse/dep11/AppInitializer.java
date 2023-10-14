@@ -20,7 +20,7 @@ public class AppInitializer extends Application {
         Scene mainScene = new Scene(root);
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("Home");
-        primaryStage.setMaximized(true);
+        primaryStage.setMaximized(false);
         primaryStage.centerOnScreen();
         primaryStage.show();
 

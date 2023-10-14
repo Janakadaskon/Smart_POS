@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.dep11.controller.MainFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.controller.MainFormController">
+   <children>
+      <ImageView fx:id="imgCargils" fitHeight="119.0" fitWidth="133.0" layoutX="47.0" layoutY="16.0">
+         <image>
+            <Image url="@../asset/fc_logo.jpg" />
+         </image>
+      </ImageView>
+      <Separator layoutX="48.0" layoutY="140.0" prefHeight="10.0" prefWidth="501.0" />
+      <Label fx:id="lblPOS" layoutX="211.0" layoutY="29.0" prefHeight="21.0" prefWidth="178.0" text="Smart POS System">
+         <font>
+            <Font name="Ubuntu Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="360.0" text="Copyright © 2023 RavanaDigitalSolutions. All Rights Reserved.">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgCustomer" fitHeight="119.0" fitWidth="123.0" layoutX="74.0" layoutY="180.0">
+         <image>
+            <Image url="@../asset/customer.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>
