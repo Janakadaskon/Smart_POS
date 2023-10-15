@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.controller.MainFormController">
    <children>
       <ImageView fx:id="imgCargils" fitHeight="119.0" fitWidth="133.0" layoutX="47.0" layoutY="16.0">
@@ -16,7 +15,7 @@
          </image>
       </ImageView>
       <Separator layoutX="48.0" layoutY="140.0" prefHeight="10.0" prefWidth="501.0" />
-      <Label fx:id="lblPOS" layoutX="211.0" layoutY="29.0" prefHeight="21.0" prefWidth="178.0" text="Smart POS System">
+      <Label fx:id="lblPOS" layoutX="211.0" layoutY="27.0" prefHeight="21.0" prefWidth="178.0" text="Smart POS System">
          <font>
             <Font name="Ubuntu Bold" size="18.0" />
          </font>
@@ -26,10 +25,16 @@
             <Font name="System Italic" size="13.0" />
          </font>
       </Label>
-      <ImageView fx:id="imgCustomer" fitHeight="119.0" fitWidth="123.0" layoutX="74.0" layoutY="180.0">
+      <ImageView fx:id="imgCustomer" fitHeight="104.0" fitWidth="114.0" layoutX="74.0" layoutY="180.0">
          <image>
             <Image url="@../asset/customer.png" />
          </image>
       </ImageView>
+      <Label fx:id="lblOn" layoutX="213.0" layoutY="60.0" prefHeight="16.0" prefWidth="172.0" text="On your way home" />
+      <Label fx:id="lblWelcome" layoutX="239.0" layoutY="308.0" prefHeight="28.0" prefWidth="123.0" text="WELCOME...!" textFill="#f27b04">
+         <font>
+            <Font name="Ubuntu Bold Italic" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
