@@ -5,26 +5,39 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="669.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.ManageCustomerFormController">
+<AnchorPane prefHeight="694.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.controller.ManageCustomerFormController">
    <children>
-      <Button layoutX="448.0" layoutY="22.0" mnemonicParsing="false" text="+New Customer" />
-      <Label layoutX="61.0" layoutY="46.0" text="Customer ID:" />
-      <Label layoutX="61.0" layoutY="110.0" text="Customer Name:" />
-      <TextField layoutX="62.0" layoutY="71.0" prefHeight="24.0" prefWidth="508.0" />
-      <TextField layoutX="62.0" layoutY="140.0" prefHeight="24.0" prefWidth="508.0" />
-      <TextField layoutX="62.0" layoutY="200.0" prefHeight="24.0" prefWidth="508.0" />
-      <Label layoutX="61.0" layoutY="175.0" text="Customer Address:" />
-      <Button layoutX="238.0" layoutY="238.0" mnemonicParsing="false" text="SAVE" />
-      <Button layoutX="333.0" layoutY="238.0" mnemonicParsing="false" text="DELETE" />
-      <TableView layoutX="62.0" layoutY="314.0" prefHeight="336.0" prefWidth="508.0">
+      <Button fx:id="btnNewCustomer" layoutX="448.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnNewCustomerOnAction" text="+New Customer" />
+      <Label layoutX="61.0" layoutY="74.0" text="Customer ID:" />
+      <Label layoutX="61.0" layoutY="138.0" text="Customer Name:" />
+      <TextField fx:id="txtID" layoutX="62.0" layoutY="99.0" prefHeight="24.0" prefWidth="508.0" />
+      <TextField fx:id="txtName" layoutX="62.0" layoutY="168.0" prefHeight="24.0" prefWidth="508.0" />
+      <TextField fx:id="txtAddress" layoutX="62.0" layoutY="228.0" prefHeight="24.0" prefWidth="508.0" />
+      <Label layoutX="61.0" layoutY="203.0" text="Customer Address:" />
+      <Button fx:id="btnSave" layoutX="238.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnSaveOnAction" text="SAVE" />
+      <Button fx:id="btnDelete" layoutX="333.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" text="DELETE" />
+      <TableView fx:id="tblCusomer" layoutX="62.0" layoutY="321.0" prefHeight="336.0" prefWidth="508.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="223.0" text="Name" />
-            <TableColumn prefWidth="223.0" text="Address" />
+          <TableColumn prefWidth="140.0" text="CUSTOMER ID" />
+          <TableColumn prefWidth="172.0" text="CUSTOMER NAME" />
+            <TableColumn prefWidth="209.0" text="CUSTOMER ADDRESS" />
         </columns>
       </TableView>
+      <ImageView fitHeight="43.0" fitWidth="44.0" layoutX="61.0" layoutY="14.0">
+         <image>
+            <Image url="@../asset/home-icon.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="117.0" layoutY="24.0" text="Home">
+         <font>
+            <Font name="Ubuntu Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
