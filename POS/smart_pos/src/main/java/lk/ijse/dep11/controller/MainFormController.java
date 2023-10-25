@@ -3,17 +3,23 @@ package lk.ijse.dep11.controller;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -101,8 +107,52 @@ public class MainFormController implements Initializable {
         }
     }
 
+    @FXML
+    private void navigate(MouseEvent event) throws IOException{
+        if (event.getSource() instanceof ImageView){
+            ImageView icon = (ImageView) event.getSource();
+
+            Parent root = null;
+
+            switch (icon.getId()){
+                case "imgCustomer":
+                    root = FXMLLoader.load(this.getClass().getResource("/view/ManageCustomerForm.fxml"));
+                    break;
+                case "imgItem":
+                    root = FXMLLoader.load(this.getClass().getResource("/view/ManageItemForm.fxml"));
+                    break;
+                case "imgOrder":
+                    root = FXMLLoader.load(this.getClass().getResource("/view/SerchOrdersForm.fxml"));
+                    break;
+                case "imViewOrders":
+                    root = FXMLLoader.load(this.getClass().getResource("/view/SearchOrderForms.fxml"));
+                    break;
+            }
+
+            if (root != null){
+
+                Scene subScene = new Scene(root);
+                Stage primaryStage = (Stage) this.root.getScene().getWindow();
+                primaryStage.setResizable(true);
+                primaryStage.setScene(subScene);
+                primaryStage.sizeToScene();
+                primaryStage.centerOnScreen();
+                primaryStage.setOnCloseRequest(Event::consume);
+
+                TranslateTransition tt = new TranslateTransition(Duration.millis(350), subScene.getRoot());
+                tt.setFromX(-subScene.getWidth());
+                tt.setToX(0);
+                tt.play();
+
+                Platform.runLater(()-> primaryStage.setResizable(false));
+            }
+
+        }
+    }
+
 
 }
+
 
 
 
