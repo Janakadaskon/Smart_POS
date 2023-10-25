@@ -108,7 +108,7 @@ public class MainFormController implements Initializable {
     }
 
     @FXML
-    private void navigate(MouseEvent event) throws IOException{
+    private void navigate(javafx.scene.input.MouseEvent event) throws IOException{
         if (event.getSource() instanceof ImageView){
             ImageView icon = (ImageView) event.getSource();
 
@@ -149,6 +149,7 @@ public class MainFormController implements Initializable {
 
         }
     }
+
 
 
 }

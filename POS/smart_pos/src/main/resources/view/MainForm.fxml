@@ -31,7 +31,7 @@
             <Font name="Ubuntu Bold Italic" size="18.0" />
          </font>
       </Label>
-      <ImageView fx:id="imgCustomer" fitHeight="90.0" fitWidth="96.0" layoutX="59.0" layoutY="165.0" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation">
+      <ImageView fx:id="imgCustomer" fitHeight="90.0" fitWidth="96.0" layoutX="59.0" layoutY="165.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation">
          <image>
             <Image url="@../asset/customer.png" />
          </image>
@@ -39,7 +39,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="imgStock" fitHeight="90.0" fitWidth="90.0" layoutX="191.0" layoutY="165.0" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" preserveRatio="true">
+      <ImageView fx:id="imgStock" fitHeight="90.0" fitWidth="90.0" layoutX="191.0" layoutY="165.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" preserveRatio="true">
          <image>
             <Image url="@../asset/items.png" />
          </image>
@@ -47,7 +47,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="imgSearch" fitHeight="90.0" fitWidth="90.0" layoutX="448.0" layoutY="165.0" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation">
+      <ImageView fx:id="imgSearch" fitHeight="90.0" fitWidth="90.0" layoutX="448.0" layoutY="165.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation">
          <image>
             <Image url="@../asset/search.png" />
          </image>
@@ -55,7 +55,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="imgOrder" fitHeight="90.0" fitWidth="90.0" layoutX="323.0" layoutY="165.0" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation">
+      <ImageView fx:id="imgOrder" fitHeight="90.0" fitWidth="90.0" layoutX="323.0" layoutY="165.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation">
          <image>
             <Image url="@../asset/orders.png" />
          </image>
