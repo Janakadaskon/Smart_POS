@@ -28,7 +28,7 @@
             <TableColumn prefWidth="209.0" text="CUSTOMER ADDRESS" />
         </columns>
       </TableView>
-      <ImageView fitHeight="43.0" fitWidth="44.0" layoutX="61.0" layoutY="14.0">
+      <ImageView fx:id="imgHome" fitHeight="43.0" fitWidth="44.0" layoutX="61.0" layoutY="14.0" onMouseClicked="#navigateToHome" >
          <image>
             <Image url="@../asset/home-icon.png" />
          </image>
