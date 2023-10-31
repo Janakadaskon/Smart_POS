@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -26,7 +27,11 @@ public class ManageCustomerFormController {
         MainFormController.navigateToMain(root);
     }
 
+    public void initialize() {
+    }
+
     public void btnNewCustomerOnAction(ActionEvent event) {
+
     }
 
     public void btnSaveOnAction(ActionEvent event) {
