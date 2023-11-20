@@ -10,30 +10,42 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="694.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.controller.ManageCustomerFormController">
+<AnchorPane id="home" fx:id="root" prefHeight="694.0" prefWidth="630.0" style="-fx-background-color: lightblue;" styleClass="imgHome" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.controller.ManageCustomerFormController">
    <children>
-      <Button fx:id="btnNewCustomer" layoutX="448.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnNewCustomerOnAction" text="+New Customer" />
-      <Label layoutX="61.0" layoutY="74.0" text="Customer ID:" />
-      <Label layoutX="61.0" layoutY="138.0" text="Customer Name:" />
-      <TextField fx:id="txtID" layoutX="62.0" layoutY="99.0" prefHeight="24.0" prefWidth="508.0" />
+      <Button fx:id="btnNewCustomer" layoutX="448.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnNewCustomerOnAction" style="-fx-background-color: blue;" text="+New Customer">
+         <font>
+            <Font name="Ubuntu Bold" size="14.0" />
+         </font></Button>
+      <Label layoutX="61.0" layoutY="74.0" text="Customer ID:">
+         <font>
+            <Font name="Ubuntu Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="61.0" layoutY="138.0" text="Customer Name:">
+         <font>
+            <Font name="Ubuntu Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="txtCustomerId" layoutX="62.0" layoutY="99.0" prefHeight="24.0" prefWidth="508.0" />
       <TextField fx:id="txtName" layoutX="62.0" layoutY="168.0" prefHeight="24.0" prefWidth="508.0" />
       <TextField fx:id="txtAddress" layoutX="62.0" layoutY="228.0" prefHeight="24.0" prefWidth="508.0" />
-      <Label layoutX="61.0" layoutY="203.0" text="Customer Address:" />
-      <Button fx:id="btnSave" layoutX="238.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnSaveOnAction" text="SAVE" />
-      <Button fx:id="btnDelete" layoutX="333.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" text="DELETE" />
-      <TableView fx:id="tblCusomer" layoutX="62.0" layoutY="321.0" prefHeight="336.0" prefWidth="508.0">
+      <Label layoutX="61.0" layoutY="203.0" text="Customer Address:">
+         <font>
+            <Font name="Ubuntu Bold" size="14.0" />
+         </font></Label>
+      <Button fx:id="btnSave" layoutX="232.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="24.0" prefWidth="74.0" style="-fx-background-color: lime;" text="SAVE" />
+      <Button fx:id="btnDelete" layoutX="333.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" style="-fx-background-color: orange;" text="DELETE" />
+      <TableView fx:id="tblCustomers" layoutX="62.0" layoutY="321.0" prefHeight="336.0" prefWidth="508.0">
         <columns>
           <TableColumn prefWidth="140.0" text="CUSTOMER ID" />
           <TableColumn prefWidth="172.0" text="CUSTOMER NAME" />
             <TableColumn prefWidth="209.0" text="CUSTOMER ADDRESS" />
         </columns>
       </TableView>
-      <ImageView fx:id="imgHome" fitHeight="43.0" fitWidth="44.0" layoutX="61.0" layoutY="14.0" onMouseClicked="#navigateToHome" >
+      <ImageView id="home" fx:id="imgHome" fitHeight="55.0" fitWidth="59.0" layoutX="19.0" layoutY="14.0" onMouseClicked="#navigateToHome" style="-fx-effect: glow;" styleClass="imgHome">
          <image>
             <Image url="@../asset/home-icon.png" />
          </image>
       </ImageView>
-      <Label layoutX="117.0" layoutY="24.0" text="Home">
+      <Label layoutX="84.0" layoutY="29.0" text="Home">
          <font>
             <Font name="Ubuntu Bold" size="13.0" />
          </font>
