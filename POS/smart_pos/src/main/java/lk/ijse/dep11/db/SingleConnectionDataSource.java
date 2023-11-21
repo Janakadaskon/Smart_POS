@@ -15,7 +15,6 @@ public class SingleConnectionDataSource {
 
     private final Connection connection;
 
-
     public SingleConnectionDataSource() {
         try {
             Properties properties = new Properties();
@@ -43,6 +42,6 @@ public class SingleConnectionDataSource {
     }
 
     public Connection getConnection() {
-        return getConnection();
+        return connection;
     }
 }

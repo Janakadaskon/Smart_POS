@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS "order"(
     date DATE DEFAULT CURRENT_DATE NOT NULL ,
     customer_id VARCHAR(10) NOT NULL ,
     CONSTRAINT fk_order FOREIGN KEY (customer_id) REFERENCES customer (id)
-)
+);
 
 CREATE TABLE IF NOT EXISTS order_item(
     order_id VARCHAR(10),

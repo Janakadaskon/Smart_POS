@@ -26,9 +26,7 @@ public class PlaceOrderFormController {
     public Button btnOrder;
     public AnchorPane root;
 
-    public void navigateToHome(javafx.scene.input.MouseEvent mouseEvent)throws IOException {
-        MainFormController.navigateToMain(root);
-    }
+
 
     public void btnAddOnAction(ActionEvent event) {
     }

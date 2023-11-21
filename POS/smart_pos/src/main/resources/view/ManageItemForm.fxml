@@ -31,33 +31,33 @@
                   <Font name="Ubuntu" size="16.0" />
                </font>
             </Label>
-            <TextField />
-            <Label text="Label:">
+            <TextField fx:id="txtCode" />
+            <Label text="Description:">
                <font>
                   <Font name="Ubuntu" size="16.0" />
                </font>
             </Label>
-            <TextField />
+            <TextField fx:id="txtDescription" />
             <Label text="Qty. on Hand:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField />
+            <TextField fx:id="txtQtyOnHand" />
             <Label text="Unit Price:">
                <font>
                   <Font name="Ubuntu" size="16.0" />
                </font>
             </Label>
-            <TextField />
+            <TextField fx:id="txtUnitPrice" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: limegreen;" text="SAVE">
+                  <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" style="-fx-background-color: limegreen;" text="SAVE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: yellow;" text="DELETE">
+                  <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" style="-fx-background-color: yellow;" text="DELETE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -66,12 +66,12 @@
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="456.0" layoutY="36.0" mnemonicParsing="false" style="-fx-background-color: blue;" text="+NEW ITEM" textFill="WHITE">
+      <Button fx:id="btnNewItem" layoutX="456.0" layoutY="36.0" mnemonicParsing="false" onAction="#btnNewItemOnAction" style="-fx-background-color: blue;" text="+NEW ITEM" textFill="WHITE">
          <font>
             <Font name="Ubuntu Bold" size="13.0" />
          </font>
       </Button>
-      <TableView layoutX="63.0" layoutY="410.0" prefHeight="286.0" prefWidth="484.0">
+      <TableView fx:id="tblItem" layoutX="63.0" layoutY="410.0" prefHeight="286.0" prefWidth="484.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Code" />
           <TableColumn prefWidth="182.0" text="Description" />
