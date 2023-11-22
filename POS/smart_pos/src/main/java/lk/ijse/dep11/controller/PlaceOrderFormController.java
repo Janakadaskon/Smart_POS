@@ -21,7 +21,7 @@ public class PlaceOrderFormController {
     public TextField txtPrice;
     public TextField txtQty;
     public Button btnAdd;
-    public TableView tblOrder;
+    public TableView<> tblOrder;
     public Label txtTotal;
     public Button btnOrder;
     public AnchorPane root;
