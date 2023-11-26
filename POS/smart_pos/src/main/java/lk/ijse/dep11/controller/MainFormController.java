@@ -56,7 +56,7 @@ public class MainFormController implements Initializable {
 
             icon.setEffect(null);
             lblMenu.setText("Welcome..!");
-            lblDescription.setText("Please select one of above Otion to proceed");
+            lblDescription.setText("Please select one of above Option to proceed");
 
         }
     }

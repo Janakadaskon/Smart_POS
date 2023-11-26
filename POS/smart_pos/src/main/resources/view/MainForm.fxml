@@ -21,7 +21,7 @@
             <Font name="Ubuntu Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="94.0" layoutY="360.0" text="Copyright © 2023 RavanaDigitalSolutions. All Rights Reserved.">
+      <Label layoutX="94.0" layoutY="360.0" text="Copyright © 2023 Alpha_Coders_IT_Solutions. All Rights Reserved.">
          <font>
             <Font name="System Italic" size="13.0" />
          </font>
