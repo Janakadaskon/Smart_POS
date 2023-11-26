@@ -63,6 +63,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Label fx:id="lblDescription" alignment="CENTER" layoutX="97.0" layoutY="322.0" prefHeight="16.0" prefWidth="403.0" text="Please select one of above Otion to proceed" />
+      <Label fx:id="lblDescription" alignment="CENTER" layoutX="97.0" layoutY="322.0" prefHeight="16.0" prefWidth="403.0" text="Please select one of above Option to proceed" />
    </children>
 </AnchorPane>

@@ -28,7 +28,7 @@
             </Label>
          </children>
       </VBox>
-      <ImageView fx:id="imgHome" fitHeight="70.0" fitWidth="68.0" layoutX="27.0" layoutY="28.0">
+      <ImageView fx:id="imgHome" fitHeight="70.0" fitWidth="68.0" layoutX="27.0" layoutY="28.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../asset/home-icon.png" />
          </image>

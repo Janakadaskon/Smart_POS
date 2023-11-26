@@ -1,20 +1,26 @@
 package lk.ijse.dep11.controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.dep11.db.CustomerDataAccess;
 import lk.ijse.dep11.tm.Customer;
 import lk.ijse.dep11.tm.Item;
 import lk.ijse.dep11.tm.OrderItem;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class PlaceOrderFormController {
+
+    public AnchorPane root;
     public ImageView imgHome;
     public TextField txtName;
     public TextField txtDescription;
@@ -24,24 +30,57 @@ public class PlaceOrderFormController {
     public Button btnAdd;
     public TableView<OrderItem> tblOrder;
     public Button btnOrder;
-    public AnchorPane root;
+
     public ComboBox<Customer> cmbCustomerId;
     public ComboBox<Item> cmbItemCode;
     public Label lblDate;
     public Label lblTotal;
     public Label lblOrderId;
 
-    public void initialize(){
+    public void initialize() throws IOException {
         String[] cols = {"code", "description" ,"qty", "unitPrice", "total", "btnDelete"};
         for (int i = 0; i< cols.length;i++){
             tblOrder.getColumns().get(i).setCellValueFactory(new PropertyValueFactory<>(cols[i]));
         }
         lblDate.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         newOrder();
+        cmbCustomerId.getSelectionModel().selectedItemProperty().addListener((ov, prev, cur) -> {
+            if (cur != null){
+                txtName.setText(cur.getName());
+                txtName.setDisable(false);
+                txtName.setEditable(false);
+            }else {
+                txtName.clear();
+                txtName.setDisable(true);
+            }
+        });
+        cmbItemCode.getSelectionModel().selectedItemProperty().addListener((ov, prev, cur) -> {
+            if (cur != null){
+                txtDescription.setText(cur.getDescription());
+                txtQtyOnHand.setText(cur.getQty() + "");
+                txtUnitPrice.setText(cur.getUnitPrice().toString());
 
+                for (TextField txt : new TextField[]{txtDescription, txtQtyOnHand, txtUnitPrice}){
+                    txt.setDisable(false);
+                    txt.setEditable(false);
+                }
+                txtQty.setDisable(cur.getQty() == 0);
+            }else {
+                for (TextField txt : new TextField[]{txtDescription, txtQtyOnHand, txtUnitPrice, txtQty}){
+                    txt.setDisable(true);
+                    txt.clear();
+                }
+            }
+        });
+
+        txtQty.textProperty().addListener((ov, prevQty, curQty) -> {
+            Item selectedItem = cmbItemCode.getSelectionModel().getSelectedItem();
+            btnAdd.setDisable(!(curQty.matches("\\d+") && Integer.parseInt(curQty) <= selectedItem.getQty()
+                    && Integer.parseInt(curQty) > 0));
+        });
     }
 
-    private void newOrder() {
+    private void newOrder() throws IOException{
         for (TextField txt: new TextField[]{txtName, txtDescription, txtQty, txtQtyOnHand, txtUnitPrice}){
             txt.clear();
             txt.setDisable(true);
@@ -51,6 +90,19 @@ public class PlaceOrderFormController {
         lblTotal.setText("Total: Rs. 0.00");
         btnAdd.setDisable(true);
         btnOrder.setDisable(true);
+        cmbCustomerId.getSelectionModel().clearSelection();
+        cmbItemCode.getSelectionModel().clearSelection();
+        try {
+            cmbCustomerId.getItems().clear();
+            cmbCustomerId.getItems().addAll(CustomerDataAccess.getAllCustomer());
+            cmbItemCode.getItems().clear();
+            cmbItemCode.getSelectionModel().clearSelection();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to establish database connection, try again");
+            e.printStackTrace();
+            navigateToHome(null);
+        }
+        Platform.runLater(cmbCustomerId::requestFocus);
 
 
     }
@@ -62,6 +114,7 @@ public class PlaceOrderFormController {
     public void btnOrderOnAction(ActionEvent event) {
     }
 
-
-
+    public void navigateToHome(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        MainFormController.navigateToMain(root);
+    }
 }

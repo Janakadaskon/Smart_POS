@@ -26,24 +26,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainFormController implements Initializable {
+    public ImageView imgCustomer;
+    public ImageView imgStock;
+    public ImageView imgSearch;
+    public ImageView imgOrder;
     @FXML
     private AnchorPane root;
-    @FXML
-    private ImageView imgCargills;
-    @FXML
-    private ImageView imgCustomer;
-    @FXML
-    private ImageView imgOrder;
-    @FXML
-    private ImageView imgSearch;
-    @FXML
-    private ImageView imgStock;
     @FXML
     private Label lblMenu;
     @FXML
     private Label lblDescription;
-    @FXML
-    private Label lblOn;
+
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         FadeTransition fadeIn = new FadeTransition(Duration.millis(2000),root);
@@ -120,13 +113,13 @@ public class MainFormController implements Initializable {
                 case "imgCustomer":
                     root = FXMLLoader.load(this.getClass().getResource("/view/ManageCustomerForm.fxml"));
                     break;
-                case "imgItem":
+                case "imgStock":
                     root = FXMLLoader.load(this.getClass().getResource("/view/ManageItemForm.fxml"));
                     break;
                 case "imgOrder":
                     root = FXMLLoader.load(this.getClass().getResource("/view/PlaceOrderForm.fxml"));
                     break;
-                case "imViewOrders":
+                case "imgSearch":
                     root = FXMLLoader.load(this.getClass().getResource("/view/SearchOrderForms.fxml"));
                     break;
             }
@@ -141,7 +134,7 @@ public class MainFormController implements Initializable {
                 primaryStage.centerOnScreen();
                 primaryStage.setOnCloseRequest(Event::consume);
 
-                TranslateTransition tt = new TranslateTransition(Duration.millis(350), subScene.getRoot());
+                TranslateTransition tt = new TranslateTransition(Duration.millis(250), subScene.getRoot());
                 tt.setFromX(-subScene.getWidth());
                 tt.setToX(0);
                 tt.play();
