@@ -26,12 +26,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainFormController implements Initializable {
-    public ImageView imgCustomer;
-    public ImageView imgStock;
-    public ImageView imgSearch;
-    public ImageView imgOrder;
+
     @FXML
     private AnchorPane root;
+    @FXML
+    private ImageView imgCustomer;
+    @FXML
+    private ImageView imgStock;
+    @FXML
+    private ImageView imgSearch;
+    @FXML
+    private ImageView imgOrder;
     @FXML
     private Label lblMenu;
     @FXML
@@ -117,10 +122,17 @@ public class MainFormController implements Initializable {
                     root = FXMLLoader.load(this.getClass().getResource("/view/ManageItemForm.fxml"));
                     break;
                 case "imgOrder":
-                    root = FXMLLoader.load(this.getClass().getResource("/view/PlaceOrderForm.fxml"));
+
+                    try {
+                        root = FXMLLoader.load(this.getClass().getResource("/view/PlaceOrderForm.fxml"));
+                    }catch (NullPointerException e){
+                        System.out.println("NullPointException while loading");
+                        e.printStackTrace();
+                    }
+
                     break;
                 case "imgSearch":
-                    root = FXMLLoader.load(this.getClass().getResource("/view/SearchOrderForms.fxml"));
+                    root = FXMLLoader.load(this.getClass().getResource("/view/SearchOrderForm.fxml"));
                     break;
             }
 

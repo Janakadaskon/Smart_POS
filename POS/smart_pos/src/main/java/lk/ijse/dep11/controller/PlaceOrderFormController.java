@@ -1,5 +1,6 @@
 package lk.ijse.dep11.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -14,9 +15,11 @@ import lk.ijse.dep11.tm.OrderItem;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 public class PlaceOrderFormController {
 
@@ -39,7 +42,7 @@ public class PlaceOrderFormController {
 
     public void initialize() throws IOException {
         String[] cols = {"code", "description" ,"qty", "unitPrice", "total", "btnDelete"};
-        for (int i = 0; i< cols.length;i++){
+        for (int i = 0; i< cols.length; i++){
             tblOrder.getColumns().get(i).setCellValueFactory(new PropertyValueFactory<>(cols[i]));
         }
         lblDate.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
@@ -109,6 +112,38 @@ public class PlaceOrderFormController {
 
 
     public void btnAddOnAction(ActionEvent event) {
+        Item selectedItem = cmbItemCode.getSelectionModel().getSelectedItem();
+        Optional<OrderItem> optOrderItem = tblOrder.getItems().stream()
+                .filter(item -> selectedItem.getCode().equals(item.getCode())).findFirst();
+
+        if (optOrderItem.isEmpty()){
+            JFXButton btnDelete = new JFXButton("Delete");
+            OrderItem newOrderItem = new OrderItem(selectedItem.getCode(), selectedItem.getDescription(),
+                    Integer.parseInt(txtQty.getText()), selectedItem.getUnitPrice(), btnDelete);
+            tblOrder.getItems().add(newOrderItem);
+            btnDelete.setOnAction(e -> {
+                tblOrder.getItems().remove(newOrderItem);
+                selectedItem.setQty(selectedItem.getQty() + newOrderItem.getQty());
+                calculateOrderTotal();
+            });
+            selectedItem.setQty(selectedItem.getQty() + newOrderItem.getQty());
+        }else {
+            OrderItem orderItem = optOrderItem.get();
+            orderItem.setQty(orderItem.getQty() + Integer.parseInt(txtQty.getText()));
+            tblOrder.refresh();
+            selectedItem.setQty(selectedItem.getQty() - Integer.parseInt(txtQty.getText()));
+        }
+        cmbItemCode.getSelectionModel().clearSelection();
+        cmbItemCode.requestFocus();
+        calculateOrderTotal();
+
+    }
+
+    private void calculateOrderTotal() {
+        Optional<BigDecimal> orderTotal = tblOrder.getItems().stream()
+                .map(oi -> oi.getTotal())
+                .reduce((prev, cur) -> prev.add(cur));
+        lblTotal.setText("Total: Rs. " + orderTotal.orElseGet(() -> BigDecimal.ZERO).setScale(2));
     }
 
     public void btnOrderOnAction(ActionEvent event) {
