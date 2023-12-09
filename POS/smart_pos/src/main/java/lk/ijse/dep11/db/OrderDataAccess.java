@@ -1,7 +1,9 @@
 package lk.ijse.dep11.db;
 
+import lk.ijse.dep11.tm.Item;
 import lk.ijse.dep11.tm.OrderItem;
 
+import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -74,9 +76,17 @@ public class OrderDataAccess {
         }
     }
 
+
+
+//    public static List<OrderItem> findOrders(String query) throws SQLException{
+//        for (int i = 0; i <= 4; i++) {
+//
+//        }
+//    }
+
     public static String getLastOrderId()throws SQLException{
         ResultSet rst = STM_GET_LAST_ID.executeQuery();
-        return (rst.next())? rst.getString(1): null;
+        return (rst.next()) ? rst.getString(1): null;
     }
 
     public static boolean existOrderByCustomerId(String customerId)throws SQLException{

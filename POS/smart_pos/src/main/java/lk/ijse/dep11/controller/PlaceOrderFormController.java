@@ -9,10 +9,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dep11.db.CustomerDataAccess;
+import lk.ijse.dep11.db.ItemDataAccess;
 import lk.ijse.dep11.db.OrderDataAccess;
 import lk.ijse.dep11.tm.Customer;
 import lk.ijse.dep11.tm.Item;
 import lk.ijse.dep11.tm.OrderItem;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -21,6 +28,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.Optional;
 
 public class PlaceOrderFormController {
@@ -62,7 +70,7 @@ public class PlaceOrderFormController {
         cmbItemCode.getSelectionModel().selectedItemProperty().addListener((ov, prev, cur) -> {
             if (cur != null){
                 txtDescription.setText(cur.getDescription());
-                txtQtyOnHand.setText(cur.getQty() + "");
+                txtQtyOnHand.setText(Integer.toString(cur.getQty()));
                 txtUnitPrice.setText(cur.getUnitPrice().toString());
 
                 for (TextField txt : new TextField[]{txtDescription, txtQtyOnHand, txtUnitPrice}){
@@ -94,14 +102,22 @@ public class PlaceOrderFormController {
         tblOrder.getItems().clear();
         lblTotal.setText("Total: Rs. 0.00");
         btnAdd.setDisable(true);
-        btnOrder.setDisable(true);
+//        btnOrder.setDisable(true);
         cmbCustomerId.getSelectionModel().clearSelection();
         cmbItemCode.getSelectionModel().clearSelection();
         try {
             cmbCustomerId.getItems().clear();
             cmbCustomerId.getItems().addAll(CustomerDataAccess.getAllCustomer());
             cmbItemCode.getItems().clear();
-            cmbItemCode.getSelectionModel().clearSelection();
+            cmbItemCode.getItems().addAll(ItemDataAccess.getAllItems());
+
+            String lastOrderId = OrderDataAccess.getLastOrderId();
+            if (lastOrderId == null){
+                lblOrderId.setText("Order ID: 00001");
+            }else {
+                int newOrderId = Integer.parseInt(lastOrderId.substring(2)) + 1;
+                lblOrderId.setText(String.format("Order ID: OD%03d", newOrderId));
+            }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Failed to establish database connection, try again");
             e.printStackTrace();
@@ -154,6 +170,7 @@ public class PlaceOrderFormController {
                     Date.valueOf(lblDate.getText()),cmbCustomerId.getValue().getId(),
                     tblOrder.getItems());
             printBill();
+            btnOrder.setDisable(false);
             newOrder();
         }catch (SQLException e){
             e.printStackTrace();
@@ -162,7 +179,24 @@ public class PlaceOrderFormController {
     }
 
     private void printBill() {
+        try {
+            JasperDesign jasperDesign = JRXmlLoader.load(getClass().getResourceAsStream("/print/invoice.jrxml"));
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            HashMap<String, Object> reportParams = new HashMap<>();
+            reportParams.put("id",lblOrderId.getText().substring(10));
+            reportParams.put("date",lblDate.getText());
+            reportParams.put("customerId",cmbCustomerId.getValue().getId());
+            reportParams.put("customerName",cmbCustomerId.getValue().getName());
+            reportParams.put("total",lblTotal.getText());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, reportParams, new JRBeanCollectionDataSource(tblOrder.getItems()));
+            JasperViewer.viewReport(jasperPrint, false);
+
+        }catch (JRException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+
 
     public void navigateToHome(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         MainFormController.navigateToMain(root);

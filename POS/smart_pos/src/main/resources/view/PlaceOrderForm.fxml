@@ -66,22 +66,22 @@
       <TextField fx:id="txtUnitPrice" layoutX="234.0" layoutY="359.0" prefHeight="24.0" prefWidth="201.0" />
       <Label layoutX="468.0" layoutY="325.0" prefHeight="16.0" prefWidth="109.0" text="Qty." />
       <TextField fx:id="txtQty" layoutX="468.0" layoutY="359.0" prefHeight="24.0" prefWidth="150.0" />
-      <Button fx:id="btnAdd" layoutX="657.0" layoutY="333.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="101.0" style="-fx-background-color: limegreen;" text="ADD">
+      <Button fx:id="btnAdd" layoutX="672.0" layoutY="353.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: limegreen;" text="ADD">
          <font>
-            <Font name="Ubuntu Bold" size="20.0" />
+            <Font name="Ubuntu Bold" size="18.0" />
          </font>
       </Button>
-      <TableView fx:id="tblOrder" layoutX="57.0" layoutY="429.0" prefHeight="213.0" prefWidth="687.0">
+      <TableView fx:id="tblOrder" layoutX="26.0" layoutY="429.0" prefHeight="213.0" prefWidth="734.0">
         <columns>
           <TableColumn prefWidth="79.0" text="Code" />
           <TableColumn prefWidth="151.0" text="Description" />
             <TableColumn prefWidth="126.0" text="Qty" />
             <TableColumn minWidth="0.0" prefWidth="115.0" text="Unit Price" />
             <TableColumn prefWidth="129.0" text="Total" />
-            <TableColumn prefWidth="85.0" text="Delete" />
+            <TableColumn prefWidth="101.0" text="Delete" />
         </columns>
       </TableView>
-      <Label fx:id="lblTotal" layoutX="42.0" layoutY="657.0" prefHeight="29.0" prefWidth="138.0" text="Total:  0.00">
+      <Label fx:id="lblTotal" layoutX="42.0" layoutY="657.0" prefHeight="29.0" prefWidth="404.0" text="Total:  0.00">
          <font>
             <Font name="Ubuntu Bold" size="24.0" />
          </font>
