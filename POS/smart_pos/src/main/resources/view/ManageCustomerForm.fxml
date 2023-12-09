@@ -11,10 +11,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="home" fx:id="root" prefHeight="694.0" prefWidth="630.0" style="-fx-background-color: lightblue;" styleClass="imgHome" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.controller.ManageCustomerFormController">
+<AnchorPane id="home" fx:id="root" prefHeight="694.0" prefWidth="608.0" style="-fx-background-color: no;" styleClass="imgHome" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.controller.ManageCustomerFormController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="694.0" layoutX="-5.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="638.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.22685185074806213" green="0.626311719417572" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
       <VBox prefHeight="200.0" prefWidth="630.0">
          <children>
             <HBox prefHeight="95.0" prefWidth="197.0" spacing="400.0">
@@ -27,7 +49,7 @@
                         <Insets top="20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Button fx:id="btnNewCustomer" mnemonicParsing="false" onAction="#btnNewCustomerOnAction" style="-fx-background-color: blue;" text="+New Customer">
+                  <Button fx:id="btnNewCustomer" mnemonicParsing="false" onAction="#btnNewCustomerOnAction" style="-fx-background-color: blue;" text="+New Customer" textFill="#bfb3b3">
                      <font>
                         <Font name="Ubuntu Bold" size="14.0" />
                      </font>
@@ -52,9 +74,9 @@
             <Font name="Ubuntu Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCustomerId" layoutX="62.0" layoutY="99.0" prefHeight="24.0" prefWidth="508.0" />
-      <TextField fx:id="txtName" layoutX="62.0" layoutY="168.0" prefHeight="24.0" prefWidth="508.0" />
-      <TextField fx:id="txtAddress" layoutX="62.0" layoutY="228.0" prefHeight="24.0" prefWidth="508.0" />
+      <TextField fx:id="txtCustomerId" layoutX="62.0" layoutY="99.0" prefHeight="24.0" prefWidth="540.0" />
+      <TextField fx:id="txtName" layoutX="62.0" layoutY="168.0" prefHeight="24.0" prefWidth="540.0" />
+      <TextField fx:id="txtAddress" layoutX="62.0" layoutY="228.0" prefHeight="24.0" prefWidth="540.0" />
       <Label layoutX="61.0" layoutY="203.0" text="Customer Address:">
          <font>
             <Font name="Ubuntu Bold" size="14.0" />
@@ -62,16 +84,16 @@
       </Label>
       <Button fx:id="btnSave" layoutX="232.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="24.0" prefWidth="74.0" style="-fx-background-color: lime;" text="SAVE" />
       <Button fx:id="btnDelete" layoutX="333.0" layoutY="266.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" style="-fx-background-color: orange;" text="DELETE" />
-      <TableView fx:id="tblCustomers" layoutX="62.0" layoutY="321.0" prefHeight="336.0" prefWidth="508.0">
+      <TableView fx:id="tblCustomers" layoutX="63.0" layoutY="321.0" prefHeight="336.0" prefWidth="540.0">
         <columns>
-          <TableColumn prefWidth="140.0" text="CUSTOMER ID" />
-          <TableColumn prefWidth="172.0" text="CUSTOMER NAME" />
-            <TableColumn prefWidth="209.0" text="CUSTOMER ADDRESS" />
+          <TableColumn prefWidth="118.0" text="CUSTOMER ID" />
+          <TableColumn prefWidth="217.0" text="CUSTOMER NAME" />
+            <TableColumn prefWidth="203.0" text="CUSTOMER ADDRESS" />
         </columns>
       </TableView>
       <Label layoutX="84.0" layoutY="29.0" text="Home">
          <font>
-            <Font name="Ubuntu Bold" size="13.0" />
+            <Font name="Ubuntu Bold" size="24.0" />
          </font>
       </Label>
    </children>

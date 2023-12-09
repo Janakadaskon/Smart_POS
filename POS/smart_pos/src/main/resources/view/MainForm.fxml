@@ -6,10 +6,32 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.controller.MainFormController">
    <children>
+      <Circle layoutX="297.0" layoutY="316.0" radius="106.0" stroke="WHITE" strokeType="INSIDE">
+         <fill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.16200000047683716" green="0.8999999761581421" blue="0.678600013256073" opacity="0.5210728049278259" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Circle>
       <Separator layoutX="48.0" layoutY="140.0" prefHeight="10.0" prefWidth="501.0" />
       <Label fx:id="lblPOS" alignment="CENTER" layoutX="46.0" layoutY="112.0" prefHeight="21.0" prefWidth="501.0" text="SUPERMART POS">
          <font>

@@ -16,6 +16,7 @@ public class OrderDataAccess {
     private static final PreparedStatement STM_INSERT_ORDER;
     private static final PreparedStatement STM_INSERT_ORDER_ITEM;
     private static final PreparedStatement STM_UPDATE_STOCK;
+
 //    private static final PreparedStatement STM_FIND;
 
 
@@ -44,7 +45,7 @@ public class OrderDataAccess {
         }
     }
 
-    public static Object saveOrder(String orderId, Date orderDate, String customerId,
+    public static void saveOrder(String orderId, Date orderDate, String customerId,
                                    List<OrderItem> orderItemList)throws SQLException{
         SingleConnectionDataSource.getInstance().getConnection().setAutoCommit(false);
         try {
@@ -63,14 +64,14 @@ public class OrderDataAccess {
                 STM_UPDATE_STOCK.setString(2, orderItem.getCode());
                 STM_UPDATE_STOCK.executeUpdate();
             }
-
-
-        }catch (){
-
+            SingleConnectionDataSource.getInstance().getConnection().commit();
+            
+        }catch (Throwable t){
+            SingleConnectionDataSource.getInstance().getConnection().rollback();
+            throw new SQLException();
         }finally {
-
+            SingleConnectionDataSource.getInstance().getConnection().setAutoCommit(true);
         }
-
     }
 
     public static String getLastOrderId()throws SQLException{

@@ -17,6 +17,7 @@ import lk.ijse.dep11.tm.OrderItem;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -149,11 +150,18 @@ public class PlaceOrderFormController {
 
     public void btnOrderOnAction(ActionEvent event)throws IOException {
         try {
-            OrderDataAccess.saveOrder
+            OrderDataAccess.saveOrder(lblOrderId.getText().replace("Order ID: ","").strip(),
+                    Date.valueOf(lblDate.getText()),cmbCustomerId.getValue().getId(),
+                    tblOrder.getItems());
+            printBill();
+            newOrder();
         }catch (SQLException e){
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR,"Failed to save the order, try again");
         }
+    }
+
+    private void printBill() {
     }
 
     public void navigateToHome(javafx.scene.input.MouseEvent mouseEvent) throws IOException {

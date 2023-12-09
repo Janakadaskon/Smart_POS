@@ -1,8 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.controller.SearchOrderFormController">
-
+<AnchorPane fx:id="root" prefHeight="635.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.controller.SearchOrderFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="645.0" layoutY="-7.0" stroke="BLACK" strokeType="INSIDE" width="703.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4325048625469208" green="0.6917194724082947" blue="0.9342105388641357" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="24.0" layoutY="24.0">
+         <image>
+            <Image url="@../asset/home-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="91.0" layoutY="38.0" prefHeight="29.0" prefWidth="162.0" text="Search Orders">
+         <font>
+            <Font name="Ubuntu" size="24.0" />
+         </font>
+      </Label>
+      <TableView layoutX="20.0" layoutY="167.0" prefHeight="446.0" prefWidth="661.0">
+        <columns>
+          <TableColumn prefWidth="109.0" text="Orde ID" />
+          <TableColumn prefWidth="118.0" text="Order Date" />
+            <TableColumn prefWidth="110.0" text="Customer ID" />
+            <TableColumn prefWidth="162.0" text="Customer Name" />
+            <TableColumn prefWidth="164.0" text="Total" />
+        </columns>
+      </TableView>
+      <Label layoutX="24.0" layoutY="93.0" prefHeight="16.0" prefWidth="183.0" text="Enter something to search" />
+      <TextField layoutX="20.0" layoutY="123.0" prefHeight="24.0" prefWidth="661.0" promptText="Eg.Janaka Daskon, C001,ect." />
+      <Label layoutX="475.0" layoutY="39.0" prefHeight="30.0" prefWidth="206.0" text="SuperMart POS">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.0035000001080334187" green="0.011250000447034836" blue="0.05000000074505806" opacity="0.9080459475517273" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9342105388641357" green="0.6693012714385986" blue="0.29842835664749146" opacity="0.6499999761581421" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+   </children>
 </AnchorPane>

@@ -10,10 +10,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="732.0" prefWidth="600.0" styleClass="background" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.controller.ManageItemFormController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="732.0" stroke="BLACK" strokeType="INSIDE" width="600.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.4111842215061188" green="0.7086074352264404" blue="0.9868420958518982" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
       <ImageView fx:id="imgHome" fitHeight="56.0" fitWidth="58.0" layoutX="20.0" layoutY="24.0" onMouseClicked="#navigateToHome">
          <image>
             <Image url="@../asset/home-icon.png" />
@@ -23,8 +45,24 @@
          <font>
             <Font name="Ubuntu Bold" size="22.0" />
          </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.7578074932098389" green="0.26179999113082886" blue="0.7699999809265137" opacity="0.949999988079071" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
-      <VBox layoutX="50.0" layoutY="100.0" prefHeight="279.0" prefWidth="497.0" spacing="10.0">
+      <VBox layoutX="50.0" layoutY="100.0" prefHeight="240.0" prefWidth="497.0" spacing="10.0">
          <children>
             <Label text="Item Code:">
                <font>
@@ -50,20 +88,7 @@
                </font>
             </Label>
             <TextField fx:id="txtUnitPrice" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
-               <children>
-                  <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" style="-fx-background-color: limegreen;" text="SAVE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" style="-fx-background-color: yellow;" text="DELETE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" />
          </children>
       </VBox>
       <Button fx:id="btnNewItem" layoutX="456.0" layoutY="36.0" mnemonicParsing="false" onAction="#btnNewItemOnAction" style="-fx-background-color: blue;" text="+NEW ITEM" textFill="WHITE">
@@ -71,7 +96,7 @@
             <Font name="Ubuntu Bold" size="13.0" />
          </font>
       </Button>
-      <TableView fx:id="tblItem" layoutX="63.0" layoutY="410.0" prefHeight="286.0" prefWidth="484.0">
+      <TableView fx:id="tblItems" layoutX="63.0" layoutY="410.0" prefHeight="286.0" prefWidth="484.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Code" />
           <TableColumn prefWidth="182.0" text="Description" />
@@ -79,5 +104,15 @@
             <TableColumn prefWidth="118.0" text="Unit Price" />
         </columns>
       </TableView>
+      <Button fx:id="btnSave" layoutX="197.0" layoutY="357.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="33.0" prefWidth="88.0" style="-fx-background-color: blue;" text="SAVE" textFill="WHITE">
+         <font>
+            <Font name="Ubuntu Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnDelete" layoutX="305.0" layoutY="357.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="33.0" prefWidth="99.0" style="-fx-background-color: yellow;" text="DELETE" textFill="#030000">
+         <font>
+            <Font name="Ubuntu Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -20,11 +20,16 @@ public class ItemDataAccess {
     static {
         try {
             Connection connection = SingleConnectionDataSource.getInstance().getConnection();
-            STM_GET_ALL = connection.prepareStatement("SELECT * FROM item");
-            STM_INSERT = connection.prepareStatement("INSERT INTO item (code, description, qty, unit_price) VALUES (?,?,?,?)");
-            STM_UPDATE = connection.prepareStatement("UPDATE item SET description=?, qty=? WHERE code=?");
-            STM_DELETE = connection.prepareStatement("DELETE FROM item WHERE code=?");
-            STM_EXISTS = connection.prepareStatement("SELECT code FROM item WHERE code=?");
+            STM_GET_ALL = connection.prepareStatement
+                    ("SELECT * FROM item");
+            STM_INSERT = connection.prepareStatement
+                    ("INSERT INTO item (code, description, qty, unit_price) VALUES (?,?,?,?)");
+            STM_UPDATE = connection.prepareStatement
+                    ("UPDATE item SET description=?, qty=?, unit_price=? WHERE code=?");
+            STM_DELETE = connection.prepareStatement
+                    ("DELETE FROM item WHERE code=?");
+            STM_EXISTS = connection.prepareStatement
+                    ("SELECT code FROM item WHERE code=?");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -54,9 +59,9 @@ public class ItemDataAccess {
 
     public static void updateItem(Item item)throws SQLException{
         STM_UPDATE.setString(1, item.getDescription());
-        STM_UPDATE.setInt(2,item.getQty());
-        STM_UPDATE.setBigDecimal(3,item.getUnitPrice());
-        STM_UPDATE.setString(4,item.getCode());
+        STM_UPDATE.setInt(2, item.getQty());
+        STM_UPDATE.setBigDecimal(3, item.getUnitPrice());
+        STM_UPDATE.setString(4, item.getCode());
         STM_UPDATE.executeUpdate();
     }
 
