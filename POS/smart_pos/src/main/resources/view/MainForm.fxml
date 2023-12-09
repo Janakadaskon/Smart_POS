@@ -10,13 +10,8 @@
 
 <AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.controller.MainFormController">
    <children>
-      <ImageView fx:id="imgCargils" fitHeight="78.0" fitWidth="90.0" layoutX="244.0" layoutY="23.0">
-         <image>
-            <Image url="@../asset/fc_logo.jpg" />
-         </image>
-      </ImageView>
       <Separator layoutX="48.0" layoutY="140.0" prefHeight="10.0" prefWidth="501.0" />
-      <Label fx:id="lblPOS" alignment="CENTER" layoutX="46.0" layoutY="114.0" prefHeight="21.0" prefWidth="501.0" text="Fast Lane POS">
+      <Label fx:id="lblPOS" alignment="CENTER" layoutX="46.0" layoutY="112.0" prefHeight="21.0" prefWidth="501.0" text="SUPERMART POS">
          <font>
             <Font name="Ubuntu Bold" size="18.0" />
          </font>
@@ -64,5 +59,10 @@
          </cursor>
       </ImageView>
       <Label fx:id="lblDescription" alignment="CENTER" layoutX="97.0" layoutY="322.0" prefHeight="16.0" prefWidth="403.0" text="Please select one of above Option to proceed" />
+      <ImageView fx:id="imgCargils" fitHeight="101.0" fitWidth="108.0" layoutX="243.0" layoutY="14.0">
+         <image>
+            <Image url="@../asset/logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

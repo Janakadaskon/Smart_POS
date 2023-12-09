@@ -9,6 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dep11.db.CustomerDataAccess;
+import lk.ijse.dep11.db.OrderDataAccess;
 import lk.ijse.dep11.tm.Customer;
 import lk.ijse.dep11.tm.Item;
 import lk.ijse.dep11.tm.OrderItem;
@@ -146,7 +147,13 @@ public class PlaceOrderFormController {
         lblTotal.setText("Total: Rs. " + orderTotal.orElseGet(() -> BigDecimal.ZERO).setScale(2));
     }
 
-    public void btnOrderOnAction(ActionEvent event) {
+    public void btnOrderOnAction(ActionEvent event)throws IOException {
+        try {
+            OrderDataAccess.saveOrder
+        }catch (SQLException e){
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR,"Failed to save the order, try again");
+        }
     }
 
     public void navigateToHome(javafx.scene.input.MouseEvent mouseEvent) throws IOException {

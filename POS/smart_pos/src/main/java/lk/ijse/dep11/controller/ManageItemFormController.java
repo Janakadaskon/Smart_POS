@@ -117,7 +117,7 @@ public class ManageItemFormController {
             Item item = new Item(txtCode.getText().strip(), txtDescription.getText().strip(),
                     Integer.parseInt(txtQtyOnHand.getText()), new BigDecimal(txtUnitPrice.getText()).setScale(2));
 
-            if (btnSave.getText().equals("Save")){
+            if (btnSave.getText().equals("SAVE")){
                 if (ItemDataAccess.existsItem(item.getCode())){
                     new Alert(Alert.AlertType.ERROR, "Item code already exists").show();
                     txtCode.requestFocus();
